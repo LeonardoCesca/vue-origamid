@@ -17,6 +17,7 @@
      <p v-if="ativo">Mostrar texto</p>
      <a href="#interno" @click.prevent.once="handleClick">Link Interno</a>
      <input type="text" @keyup="handleClick">
+     <p @mousemove="handleMove">Esse é o mouse x: {{mouse.x}}</p>
     </div>
 
     <script>
@@ -24,11 +25,15 @@
            el: '#app',
            data: {
             contador: 0,
-            ativo: true
+            ativo: true,
+            mouse: ""
            },
            methods: {
                handleClick(event) {
                    console.log(event);
+               },
+               handleMove(event) {
+                this.mouse = event;
                }
            }
        })
