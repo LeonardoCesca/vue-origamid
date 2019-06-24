@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="vue.js"></script>
     <title>V-Html</title>
 </head>
 
 <body>
     <div id="app">
-
+        <div v-html="lista" v-once></div>
     </div>
 
     <script>
@@ -19,6 +20,13 @@
 
         lista: "<ul><li>Item 1</li><li>Item 2</li><li>Item 3</li></ul>"
         */
+
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                lista: "<ul><li>Item 1</li><li>Item 2</li><li>Item 3</li></ul>"
+            }
+        });
     </script>
 </body>
 
