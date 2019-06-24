@@ -5,11 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="vue.js"></script>
     <title>V-For</title>
 </head>
 
 <body>
     <div id="app">
+        <button @click="puxarCep">Puxar Cep</button>
+        <ul>
+            <li v-for="dado in dados">
+                {{dado}}
+            </li>
+        </ul>
+        <button @click="puxarCursos">Puxar Cursos</button>
+        <div v-for="curso in cursos">
+            <h2> <a :href="curso.link">{{curso.curso}}</a></h2>
+            <ul>
+                <li v-for="aula in curso.aulas">
+                    {{aula.nome}}, {{aula.tempo}}
+                </li>
+            </ul>
+        </div>
 
     </div>
 
@@ -26,8 +42,25 @@
         const vm = new Vue({
             el: "#app",
             data: {
-
+                dados: {},
+                cursos: {}
             },
+            methods: {
+                puxarCep() {
+                    fetch("https://viacep.com.br/ws/04538133/json/")
+                        .then(response => response.json())
+                        .then(response => {
+                            this.dados = response
+                        })
+                },
+                puxarCursos() {
+                    fetch("./cursos.json")
+                        .then(response => response.json())
+                        .then(response => {
+                            this.cursos = response
+                        })
+                }
+            }
         })
     </script>
 </body>
