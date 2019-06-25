@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="vue.js"></script>
+    <title>Class/Style</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <p :class="cor">Verde</p>
+      <p :class="{ativo: estaAtivo, verde: elementoVerde}">Verde</p>
+      <button @click="estaAtivo = !estaAtivo">Clique</button>
+    </div>
+
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          cor: "pink",
+          estaAtivo: false,
+          elementoVerde: true
+        }
+      });
+    </script>
+
+    <style>
+      .ativo {
+        background-color: blue;
+      }
+
+      .verde {
+        color: green;
+      }
+
+      .pink {
+        color: pink;
+      }
+    </style>
+  </body>
+</html>
