@@ -27,6 +27,26 @@
         <input id="borderRadius" type="text" v-model="estiloBotao.borderRadius">
 
         <a :style="estiloBotao" href="">Clique Aqui</a>
+
+        <form>
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="nome" v-model="nome">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" v-model="email">
+            <label for="telefone">Telefone</label>
+            <input type="text" name="telefone" id="telefone" v-model="telefone">
+            <label for="mensagem">Mensagem</label>
+            <textarea name="mensagem" id="mensagem" v-model="mensagem"></textarea><br>
+            <input @click.prevent="enviarFormulario" type="submit">
+        </form>
+
+        <div>
+            <ul>
+                <li v-for="(valor, chave) in resultado">
+                    {{chave}}: {{valor}}
+                </li>
+            </ul>
+        </div>
     </div>
 
     <style>
@@ -76,6 +96,22 @@
                     fontFamily: "Arial",
                     textAlign: "center",
                     borderRadius: "10%"
+                },
+                nome: "",
+                email: "",
+                telefone: "",
+                mensagem: "",
+                resultado: {}
+            },
+            methods: {
+                enviarFormulario() {
+                    this.resultado = {
+                        nome: this.nome,
+                        email: this.email,
+                        telefone: this.telefone,
+                        mensagem: this.mensagem,
+
+                    }
                 }
             }
         })
