@@ -11,11 +11,11 @@
 
 <body>
     <div id="app">
-        <ul :class="{column: estaAtivo}">
-            <li>Sobre</li>
-            <li>Produtos</li>
-            <li>Serviços</li>
-            <li>Contato</li>
+        <ul :class="{column: estaAtivo}" @click="changeColor">
+            <li :style="{background: bgColor}">Sobre</li>
+            <li :style="{background: bgColor}">Produtos</li>
+            <li :style="{background: bgColor}">Serviços</li>
+            <li :style="{background: bgColor}">Contato</li>
         </ul>
         <button @click="estaAtivo = !estaAtivo">Clique</button>
     </div>
@@ -68,14 +68,13 @@
         const vm = new Vue({
             el: " #app",
             data: {
-                estaAtivo: false
+                estaAtivo: false,
+                bgColor: "tomato"
             },
-            computed: {
+            methods: {
                 changeColor() {
                     const color = `hsl(${Math.random() * 360}, 100%, 50%)`;
-                    return {
-                        background: color
-                    }
+                    this.bgColor = color;
                 }
             }
         })
