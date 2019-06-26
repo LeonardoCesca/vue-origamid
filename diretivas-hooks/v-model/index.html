@@ -11,11 +11,33 @@
 
 <body>
     <div id="app">
+        <input type="color" v-model="estiloBotao.background">
+        {{estiloBotao.background}}
+        <label for="width">Width</label>
+        <input id="width" type="text" v-model="estiloBotao.width">
+        <label for="height">Height</label>
+        <input id="height" type="text" v-model="estiloBotao.height">
+        <label for="fontSize">Font-Size</label>
+        <input id="fontSize" type="text" v-model="estiloBotao.fontSize">
+        <label for="fontFamily">Font-Family</label>
+        <input id="fontFamily" type="text" v-model="estiloBotao.fontFamily">
+        <label for="textAlign">Text-Align</label>
+        <input id="textAlign" type="text" v-model="estiloBotao.textAlign">
+        <label for="borderRadius">Border-Radius</label>
+        <input id="borderRadius" type="text" v-model="estiloBotao.borderRadius">
 
+        <a :style="estiloBotao" href="">Clique Aqui</a>
     </div>
 
     <style>
+        label {
+            display: block;
+        }
 
+        a {
+            margin-top: 50px;
+            display: block;
+        }
     </style>
 
     <script>
@@ -46,7 +68,15 @@
         const vm = new Vue({
             el: " #app",
             data: {
-
+                estiloBotao: {
+                    background: "",
+                    width: "100px",
+                    height: "40px",
+                    fontSize: "20px",
+                    fontFamily: "Arial",
+                    textAlign: "center",
+                    borderRadius: "10%"
+                }
             }
         })
     </script>
