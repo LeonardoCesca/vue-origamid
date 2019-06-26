@@ -11,13 +11,13 @@
 
 <body>
     <div id="app">
-
-        <ul>
+        <ul :class="{column: estaAtivo}">
             <li>Sobre</li>
             <li>Produtos</li>
             <li>Serviços</li>
             <li>Contato</li>
         </ul>
+        <button @click="estaAtivo = !estaAtivo">Clique</button>
     </div>
 
     <style>
@@ -64,6 +64,21 @@
         Gerador de cor:
         const color = `hsl(${Math.random() * 360}, 100%, 50%)`;
         */
+
+        const vm = new Vue({
+            el: " #app",
+            data: {
+                estaAtivo: false
+            },
+            computed: {
+                changeColor() {
+                    const color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                    return {
+                        background: color
+                    }
+                }
+            }
+        })
     </script>
 </body>
 
