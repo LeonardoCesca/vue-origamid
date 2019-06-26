@@ -11,14 +11,51 @@
 
 <body>
     <div id="app">
+        <input v-model.lazy="nome" />
+        <textarea v-model.trim="mensagem"></textarea>
+        <input :value="email" />
 
+        <input type="text" v-model.number="ano"> {{ano}}
+
+        <input type="checkbox" id="receberEmail" v-model="receberEmail">
+        <label for="receberEmail">Receber Email</label>
+        {{receberEmail}}
+        <p>nome: {{nome}}</p>
+        <p>email: {{email}}</p>
+
+        <div>
+            <input type="radio" name="azul" id="azul" v-model="cor" value="azul">
+            <label for="azul">Azul</label>
+            <input type="radio" name="vermelho" id="vermelho" v-model="cor" value="vermelho">
+            <label for="vermelho">Vermelho</label>
+            <input type="radio" name="verde" id="verde" v-model="cor" value="verde">
+            <label for="verde">Verde</label>
+
+            {{cor}}
+        </div>
+
+        <div>
+            <select v-model="fruta">
+                <option disabled value="">Selecione uma Fruta</option>
+                <option value="banana">Banana</option>
+                <option value="morango">Morango</option>
+                <option value="uva">Uva</option>
+            </select>
+            {{fruta}}
+        </div>
     </div>
 
     <script>
         const vm = new Vue({
             el: "#app",
             data: {
-
+                nome: '',
+                mensagem: '',
+                email: '',
+                receberEmail: '',
+                cor: '',
+                fruta: '',
+                ano: 0
             }
         });
     </script>
