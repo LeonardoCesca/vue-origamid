@@ -11,7 +11,8 @@
 
 <body>
     <div id="app">
-
+        <input @keyup.enter="ativar" type="text">
+        <input @click.alt="ativarClick" type="text">
     </div>
 
     <style>
@@ -21,7 +22,15 @@
     <script>
         const vm = new Vue({
             el: "#app",
-            data: {}
+            data: {},
+            methods: {
+                ativar(event) {
+                    event.currentTarget.style.border = "2px solid red";
+                },
+                ativarClick(event) {
+                    event.currentTarget.style.background = "#000";
+                }
+            }
         });
     </script>
 </body>
