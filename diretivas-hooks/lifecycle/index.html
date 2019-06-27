@@ -11,7 +11,10 @@
 
 <body>
     <div id="app">
-
+        <p>{{info}}</p>
+        <ul>Dados:
+            <li v-for="(value, key, index) in info">{{index}} {{key}} : {{value}}</li>
+        </ul>
     </div>
 
     <style>
@@ -26,19 +29,25 @@
         um dos hooks do vue:
 
         https://api.github.com/users/origamid (utilize o seu usuário)
-        -->
-
-        <!-- 
-        Crie um contador, onde seja possível clicar em
-        um botão e adicionar +1 ao número.
-
-        Toda vez que o contador mudar, mude o título da página
-        para o total do contador. Utilize um hook para isso
         */
 
         const vm = new Vue({
             el: "#app",
-            data: {},
+            data: {
+                info: {}
+            },
+            methods: {
+                consultApi() {
+                    fetch("https://api.github.com/users/leonardocesca")
+                        .then(response => response.json())
+                        .then(response => {
+                            this.info = response;
+                        })
+                }
+            },
+            created() {
+                this.consultApi();
+            }
 
         });
     </script>
