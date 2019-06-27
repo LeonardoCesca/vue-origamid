@@ -11,17 +11,29 @@
 
 <body>
     <div id="app">
-
+        <p style="position: fixed">{{totalScroll}}</p>
     </div>
 
     <style>
-
+        body {
+            height: 2000px;
+        }
     </style>
 
     <script>
         const vm = new Vue({
             el: "#app",
-            data: {},
+            data: {
+                totalScroll: 0,
+            },
+            methods: {
+                handleScroll() {
+                    this.totalScroll = window.scrollY;
+                }
+            },
+            created() {
+                window.addEventListener("scroll", this.handleScroll);
+            }
         });
     </script>
 </body>
