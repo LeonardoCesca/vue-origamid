@@ -36,11 +36,21 @@
                 }
             },
             beforeCreate() {
+                console.log("Antes da criação");
                 console.log(this.mensagem);
             },
             created() {
                 this.puxarGitHub();
                 console.log(this.mensagem);
+                console.log(this.$el);
+            },
+            beforeMount() {
+                console.log("BeforeMount", this.mensagem)
+                console.log("Elemento", this.$el)
+
+            },
+            mounted() {
+                console.log("Elemento", this.$el)
             }
         });
     </script>
