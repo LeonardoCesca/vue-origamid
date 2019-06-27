@@ -11,7 +11,8 @@
 
 <body>
     <div id="app">
-
+        <p>{{mensagem}}</p>
+        <p>{{github}}</p>
     </div>
 
     <style>
@@ -21,7 +22,26 @@
     <script>
         const vm = new Vue({
             el: "#app",
-            data: {},
+            data: {
+                mensagem: "Essa é uma mensagem",
+                github: {},
+            },
+            methods: {
+                puxarGitHub() {
+                    fetch("https://api.github.com/users/leonardocesca")
+                        .then(response => response.json())
+                        .then(response => {
+                            this.github = response;
+                        })
+                }
+            },
+            beforeCreate() {
+                console.log(this.mensagem);
+            },
+            created() {
+                this.puxarGitHub();
+                console.log(this.mensagem);
+            }
         });
     </script>
 </body>
